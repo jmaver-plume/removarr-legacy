@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Removarr</title>
+    <link rel="stylesheet" href="/removarr/css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <svg class="header-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="#5CADE2" stroke-width="2"/>
+                        <path d="M8 12h8" stroke="#5CADE2" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <h1>Removarr</h1>
+                </div>
+                <div class="header-right">
+                    <button id="resync-btn" class="btn btn-resync">Resync</button>
+                    <form method="POST" action="/removarr/logout" style="display: inline;">
+                        <button type="submit" class="btn btn-secondary">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+<aside class="app-sidebar"><div class="sidebar-label">LIBRARY</div>            <div class="sidebar-nav">
+                <button class="tab-button active" data-type="movie">Movies (<span id="movie-count">0</span>)</button>
+                <button class="tab-button" data-type="series">TV Shows (<span id="series-count">0</span>)</button>
+            </div>
+
+<button id="settings-nav" class="tab-button">⚙ Settings</button></aside><main class="dashboard-main">
+            <section id="library-view">
+            <div class="media-grid" id="media-grid">
+                <div class="loading">Loading media...</div>
+            </div>
+            </section>
+            <section id="settings-view" hidden>
+                <form id="settings-form" class="settings-panel">
+                    <h3>Media connections</h3><p>Click Save changes to apply your settings. Then resync to refresh your library.</p>
+                    <% for (const service of ['sonarr', 'radarr']) { %>
+                    <fieldset><legend><%= service === 'sonarr' ? 'Sonarr' : 'Radarr' %></legend>
+                    <label>URL<input name="<%= service %>_url" type="url" placeholder="http://localhost:<%= service === 'sonarr' ? '8989' : '7878' %>" required></label>
+                    <label>API key<input name="<%= service %>_api_key" type="password" autocomplete="new-password" placeholder="Leave blank to keep the saved key"></label></fieldset>
+                    <% } %>
+                    <fieldset><legend>Voters</legend><label>Voter names<textarea name="voters" rows="4" required placeholder="One name per line"></textarea></label><p>Enter at least two unique names, one per line. Existing votes remain attached to their names.</p></fieldset>
+                    <button class="btn btn-resync" type="submit">Save changes</button><span id="settings-status" role="status"></span>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="/removarr/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+curl -b cookies.txt -X PUT http://localhost:3000/removarr/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sonarr_url": "http://media-server.example.com/sonarr",
+    "sonarr_api_key": "YOUR_SONARR_API_KEY",
+    "radarr_url": "http://media-server.example.com/radarr",
+    "radarr_api_key": "YOUR_RADARR_API_KEY",
+    "voters": ["Alice", "Bob", "Charlie"]
+  }'

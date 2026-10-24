@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Removarr - Login</title>
+    <link rel="stylesheet" href="/removarr/css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-wrapper">
+            <div class="login-form">
+                <div class="login-header">
+                    <svg class="login-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="#5CADE2" stroke-width="2"/>
+                        <path d="M8 12h8" stroke="#5CADE2" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                
+                <h2 class="login-title">SIGN IN TO CONTINUE</h2>
+                
+                <% if (error) { %>
+                    <div class="error"><%= error %></div>
+                <% } %>
+                
+                <form method="POST" action="/removarr/login">
+                    <div class="form-group">
+                        <input type="text" id="username" name="username" placeholder="Username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+            
+            <div class="login-footer-outside">
+                Removarr
+            </div>
+        </div>
+    </div>
+</body>
+</html>

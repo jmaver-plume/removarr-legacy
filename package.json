@@ -1,0 +1,27 @@
+{
+  "name": "removarr",
+  "version": "1.0.0",
+  "description": "Removarr - Media removal app for Sonarr/Radarr integration with voting system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "nodemon server.js",
+    "configure": "node scripts/configure.js",
+    "migrate": "node scripts/migrate-env-to-db.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "express-session": "^1.17.3",
+    "body-parser": "^1.20.2",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["media", "sonarr", "radarr", "removal", "voting"],
+  "author": "",
+  "license": "MIT"
+}
